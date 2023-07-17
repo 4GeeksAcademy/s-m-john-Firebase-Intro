@@ -29,30 +29,30 @@ function App() {
     { catch (e) {
       console.error(e.message);
     }
-  } )();
+  })();
 }, []);
 
   return (
     <div className="App">
-      div className="current">
-        {!!currTemp && <h2 className="current-temp">{currTemp}° F</h2>}
+      <div className="current">
+        <h2 className="current-temp">{currTemp}° F</h2>
+        <p className="current-cindition">{currCondition}</p>
 
-        {!!curCondition && (
-          <p className="current-condition">{currCondition}</p>
-        )}
         <div className="low-high-temp">
-          <span></span>
+          <span className="low-temp">H {dayLowTemp}</span>
+          <span className="high-temp">L {dayHighTemp}</span>
         </div>
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="weather-by-hour">
+          {WeatherDataByHourPages.map((weatherDataByHourPage) => ( 
+            <div>
+              <p>{weatherDataByHourPage[0]?.temp_f}</p>
+              <p>{weatherDataByHourPage[1]?.temp_f}</p>
+              <p>{weatherDataByHourPage[2]?.temp_f}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
